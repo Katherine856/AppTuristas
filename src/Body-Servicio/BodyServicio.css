@@ -1,0 +1,20 @@
+.carrusel.servicio{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.info{
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.info svg{
+  color: black;
+}
+
+@media screen and (min-width: 768px) {
+  .carrusel.servicio{
+    width: 80%;
+  }
+}

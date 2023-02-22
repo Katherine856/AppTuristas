@@ -1,0 +1,199 @@
+.Header {
+  text-align: center;
+  z-index: -1;
+}
+
+.Header-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.Header-header {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  height: 50px;
+}
+
+.Header-header>div{
+  width: 100%;
+  height: 100%;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.Header-header>div>svg{
+  cursor: pointer;
+  user-select: none;
+  color: white;
+}
+
+.Header-header>div>svg:hover{
+  filter: invert(1);
+}
+
+.Header-header .linkPrincipal {
+  width: 120px;
+  height: 100%;
+}
+
+.linkPrincipal img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.Header-header input{
+  border: none;
+  outline: none;
+  height: 60%;
+  margin-right: 15px;
+  padding-left: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+nav.mostrar{
+  display: flex;
+}
+
+nav.noMostrar{
+  display: none;
+}
+
+nav{
+  transition: .3s;
+}
+
+#lista{
+  z-index: 2;
+  padding: 5px 0px;
+  background: linear-gradient(180deg, var(--AzulBase), transparent);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  width: 50vw;
+  align-items: center;
+  list-style: none;
+  right: 0vw;
+  top: 49px;
+  gap: 4px;
+  transition: .3s;
+  margin: 0;
+}
+
+#lista .link {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 5px;
+  width: 80%;
+  text-decoration: none;
+}
+
+.titulo {
+  border: 2px solid ;
+  width: 80%;
+  margin: 10px auto;
+  padding: 5px;
+  border-radius: 10px;
+  color: var(--Negro);
+}
+
+.carrusel{
+  width: 100vw;
+  height: 30vh;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.itemCarrusel{
+  width: 100%;
+  max-height: 30vh;
+}
+
+.carrusel img{
+  width: 100%;
+  height: 30vh;
+  object-fit: contain;
+}
+
+.carrusel a span, .carrusel .carousel-indicators{
+  margin: auto 0;
+  z-index: 2;
+  filter: invert(72%) sepia(0%) saturate(542%) hue-rotate(210deg) brightness(85%) contrast(96%);
+} 
+
+@media screen and (min-width: 768px) {
+  
+
+  .Header-header>div>svg{
+    display: none;
+  }
+  .Header-header img{
+    height: 50px;
+  }
+  .Header-header>div>input{
+    width: 200px;
+  }
+
+  #lista{
+    flex-direction: row;
+    position: relative;
+    top:0px;
+    right: 0px;
+    background: transparent;
+    width: max-content;
+    padding-right: 5px;
+    height: 50px;
+  }
+
+  #lista .link{
+    position: relative;
+    background-color: transparent;
+    width: auto;
+    color: white;
+    font-size: 17px;
+  }
+
+  #lista .link::after{
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 0px;
+    height: 2px;
+    margin: 0 auto;
+    transition: .2s;
+    background-color: white;
+  }
+
+  #lista .link:hover::after{
+    width: 100%;
+    left: 0;
+  }
+  
+  nav.noMostrar{
+    display: flex;
+  }
+
+  .carrusel{
+    width: 100%;
+    height: 50vh;
+  }
+
+  .carrusel .itemCarrusel{
+    max-height: 50vh;
+  }
+
+  .carrusel img{
+    height: 50vh;
+  }
+}
