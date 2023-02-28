@@ -3,6 +3,7 @@ import './BodyPrincipal.css';
 import { Carousel } from 'react-bootstrap';
 import logo from '../Imagenes/logo.png';
 import carrusel from '../Imagenes/carrusel.png';
+import { HashLink } from "react-router-hash-link";
 
 const BodyPrincipal = () => {
 
@@ -19,6 +20,9 @@ const BodyPrincipal = () => {
                     <img src={carrusel} alt="img 2" />
                 </Carousel.Item>
             </Carousel>
+            <div>
+                <HashLink smooth to="/Nosotros#formulario"> ¿Quieres ser parte de nosotros? </HashLink>
+            </div>
         </>
     );
 }

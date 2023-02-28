@@ -1,0 +1,20 @@
+.subtitulo-nosotros{
+    display: block;
+    text-align: center;
+    margin: 15px auto 20px;
+    height: 35px;
+    width: 80%;
+    letter-spacing: 1px;
+    border-bottom: 2px solid;
+}
+
+.cont-nosotros{
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.myv{
+    width: 45%;
+}

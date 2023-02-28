@@ -1,5 +1,5 @@
 import './Header.css';
-import logo from '../Imagenes/logo.png';
+import logo from '../Imagenes/Logo5.png';
 import carrusel from '../Imagenes/carrusel.png';
 import {FaBars} from 'react-icons/fa';
 import { useState } from 'react';
@@ -23,7 +23,7 @@ function Header({color, nombre}) {
             <Link className='link' to='/Comida'>Comida</Link>
             <Link className='link' to='/Transporte'>Transporte</Link>
             <Link className='link' to='/Turismo'>Turismo</Link>
-            <Link className='link' to='/Nosotros'>Sobre Nosotros</Link>
+            <Link className='link' to='/Nosotros/home'>Sobre Nosotros</Link>
           </ul>
         </nav>
       </header>

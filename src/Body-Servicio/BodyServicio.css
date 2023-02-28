@@ -5,16 +5,35 @@
 
 .info{
   width: 90%;
-  margin: 0 auto;
+  margin: 10px auto;
   text-align: center;
+}
+
+.conBorde{
+  border: 2px solid;
+  border-radius: 10px;
 }
 
 .info svg{
   color: black;
 }
 
+.redes{
+  width: 200px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+.info>p{
+  margin: 0px;
+}
+
 @media screen and (min-width: 768px) {
   .carrusel.servicio{
+    width: 80%;
+  }
+  .info{
     width: 80%;
   }
 }

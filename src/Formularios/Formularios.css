@@ -1,0 +1,49 @@
+.titulo-form{
+    display: block;
+    text-align: center;
+    margin: 15px auto 20px;
+    height: 35px;
+    width: 80%;
+    letter-spacing: 1px;
+    border-bottom: 2px solid;
+}
+
+.campos{
+    z-index: 1;
+    position: relative;
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 2px solid;
+}
+.campo {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 5px;
+}
+
+.ingreso{
+    width: 50%;
+    padding: 0 5px;
+}
+
+.enviar{
+    width: 30%;
+    margin: 5px auto;
+    justify-self: center;
+    color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+    .campos{
+        width: 35%;
+        gap: 5px;
+    }
+
+    .campo{
+        margin: 0 auto;
+        width: 70%;
+    }
+}
