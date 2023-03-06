@@ -1,6 +1,5 @@
 import './Header.css';
 import logo from '../Imagenes/Logo5.png';
-import carrusel from '../Imagenes/carrusel.png';
 import {FaBars} from 'react-icons/fa';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -19,11 +18,11 @@ function Header({color, nombre}) {
         </div> 
         <nav id='menu' className={mostrarNav ? 'mostrar' : 'noMostrar'}>
           <ul id='lista' style={{background: "linear-gradient(180deg,"+color+", transparent)"}} >
-            <Link className='link' to='/Hospedaje'>Hospedaje</Link>
-            <Link className='link' to='/Comida'>Comida</Link>
-            <Link className='link' to='/Transporte'>Transporte</Link>
-            <Link className='link' to='/Turismo'>Turismo</Link>
-            <Link className='link' to='/Nosotros/home'>Sobre Nosotros</Link>
+            <Link className='link' to='/Servicios/Hospedaje'>Hospedaje</Link>
+            <Link className='link' to='/Servicios/Comida'>Comida</Link>
+            <Link className='link' to='/Servicios/Transporte'>Transporte</Link>
+            <Link className='link' to='/Servicios/Turismo'>Turismo</Link>
+            <Link className='link' to='/Nosotros'>Sobre Nosotros</Link>
           </ul>
         </nav>
       </header>
