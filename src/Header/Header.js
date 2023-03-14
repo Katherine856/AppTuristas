@@ -19,11 +19,11 @@ function Header({color, nombre}) {
         </div> 
         <nav id='menu' className={mostrarNav ? 'mostrar' : 'noMostrar'}>
           <ul id='lista' style={{background: "linear-gradient(180deg,"+color+", transparent)"}} >
-            <Link className='link' to='/Hospedaje'>Hospedaje</Link>
-            <Link className='link' to='/Comida'>Comida</Link>
-            <Link className='link' to='/Transporte'>Transporte</Link>
-            <Link className='link' to='/Turismo'>Turismo</Link>
-            <Link className='link' to='/Nosotros/home'>Sobre Nosotros</Link>
+            <Link className='link' to='/2'>Hospedaje</Link>
+            <Link className='link' to='/1'>Comida</Link>
+            <Link className='link' to='/3'>Transporte</Link>
+            <Link className='link' to='/4'>Turismo</Link>
+            <Link className='link' to='/Nosotros'>Sobre Nosotros</Link>
           </ul>
         </nav>
       </header>

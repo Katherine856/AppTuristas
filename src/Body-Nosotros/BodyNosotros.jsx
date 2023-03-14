@@ -19,7 +19,7 @@ const BodyNosotros = () => {
                     <p>Para el año 2028 ser la empresa de referencia para todo aquel que quiera vivir una experiencia turística completa. Convertirse en el punto de encuentro y el centro de las diferentes sinergias alrededor del turismo. </p>
                 </div>
             </div>
-            <FormularioEmpresa id='formulario'/>
+            <FormularioEmpresa/>
         </>
     );
 }

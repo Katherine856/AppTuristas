@@ -1,17 +1,20 @@
 import Header from "../Header/Header";
 import Tarjeta from "../Tarjeta/Tarjeta";
-import "./BodyComida.css"
+import "./BodyServicios.css"
 import '../index.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
 
-const BodyComida = () => {
+const BodyServicios = () => {
+
+    let { id } = useParams();
 
     let [servicios, setServicio] = useState([]);
 
     useEffect(() => {
         axios
-        .get('http://localhost:5000/comida/')
+        .get('http://localhost:5000/'+id)
         .then( (response) => {
             setServicio(response.data);
         })
@@ -20,11 +23,9 @@ const BodyComida = () => {
         })
     },[]);
 
-    let color = "#FA7D1E";
-
     return(
         <>
-            <Header color={ color } nombre='Comida'/>
+            <Header color={servicios.C_T_Servicio } nombre={servicios.N_T_Servicio}/>
             <div className="servicios">
                 {servicios.map((servicio, index) => 
                     <Tarjeta
@@ -34,7 +35,7 @@ const BodyComida = () => {
                         descripcion={servicio.N_Empresa} 
                         min={servicio.V_Min_Servicio} 
                         max={servicio.V_Max_Servicio} 
-                        color={color} />
+                        color={servicio.C_T_Servicio} />
                 )}
             </div>
             
@@ -42,4 +43,4 @@ const BodyComida = () => {
     );
 }
 
-export default BodyComida;
+export default BodyServicios;
