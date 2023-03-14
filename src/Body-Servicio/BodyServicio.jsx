@@ -11,7 +11,6 @@ import axios from 'axios';
 function BodyServicio() {
 
     let { id } = useParams();
-    let nombre = "Servicio ";
 
     let [servicio, setServicio] = useState({});
 
@@ -24,7 +23,7 @@ function BodyServicio() {
         .catch( (error) => {
             console.log(error);
         })
-    },[]);
+    },[id]);
 
     let color = servicio.C_T_Servicio;
 
