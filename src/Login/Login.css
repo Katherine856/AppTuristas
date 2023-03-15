@@ -1,12 +1,52 @@
-.Login{
-    background-image: url(../Imagenes/Login.jpeg);
-    background-size: 100% 100%;
+.Fondo{
+    background-image: url(../Imagenes/LoginPequeño.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    width: max-content;
-    height: max-content;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
 }
 
-.imgFondo{
-    
+.Login{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.contLogo{
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+}
+
+.imgLogo{
+    width: 80%;
+    margin: 10px auto;
+}
+
+@media screen and (min-width: 768px) {
+    .Fondo{
+        background-image: url(../Imagenes/Login.jpeg);
+    }
+
+    .Login{
+        flex-direction: row;
+        margin: auto auto;
+    }
+
+    .contLogo{
+        width: 40%;
+    }
+
+    .imgLogo{
+        width: 100%;
+    }
+
+    .formularioLogo{
+        width: 60%;
+    }
+
 }
