@@ -2,6 +2,7 @@ import Header from "../Header/Header";
 import './BodyNosotros.css';
 import '../index.css';
 import FormularioEmpresa from "../Formularios/Formulario-Empresa";
+import Footer from "../Footer/Footer";
 
 const BodyNosotros = () => {    
 
@@ -20,6 +21,7 @@ const BodyNosotros = () => {
                 </div>
             </div>
             <FormularioEmpresa/>
+            <Footer color={color} />
         </>
     );
 }

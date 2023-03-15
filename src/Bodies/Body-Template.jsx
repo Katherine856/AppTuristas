@@ -4,6 +4,7 @@ import '../index.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Navigate, useParams } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 const BodyTemplate = () => {
 
@@ -55,6 +56,7 @@ const BodyTemplate = () => {
                         color={secciones.get(seccion)?.color} />
                 )}
             </div>
+            <Footer color={secciones.get(seccion)?.color} />
 
         </>
     );

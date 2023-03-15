@@ -1,0 +1,25 @@
+.unirse{
+    width: 70%;
+    color: #fff;
+    background-color: #D94E9F;
+    padding: 5px;
+    margin: auto;
+    text-align: center;
+}
+.Botones{
+    margin: 25px auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+@media screen and (min-width: 768px) {
+    .unirse{
+        width: 30%;
+    }
+
+    .Botones{
+        flex-direction: row;
+        
+    }
+  }

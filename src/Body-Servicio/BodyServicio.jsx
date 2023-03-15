@@ -7,6 +7,7 @@ import logo from '../Imagenes/logo.png';
 import carrusel from '../Imagenes/carrusel.png';
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import axios from 'axios';
+import Footer from "../Footer/Footer";
 
 function BodyServicio() {
 
@@ -51,6 +52,7 @@ function BodyServicio() {
                 <p>{servicio.C_Empresa}</p>
                 <p>{servicio.D_Empresa}</p>
             </div>
+            <Footer color={color} />
         </>
     )
 }

@@ -1,0 +1,36 @@
+.Footer {
+    margin: 10px auto;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.linkPrincipalFooter {
+    width: 30%;
+    margin: 5px auto;
+
+}
+
+.linkPrincipalFooter img {
+    width: 100%;
+
+}
+
+.redesFooter {
+    width: 200px;
+    display: flex;
+    margin: 2px auto;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+svg {
+    color: black;
+}
+
+@media screen and (min-width: 768px) {
+    .linkPrincipalFooter {
+        width: 12%;
+    }
+}
