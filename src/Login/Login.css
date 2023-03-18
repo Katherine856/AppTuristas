@@ -30,11 +30,13 @@
 @media screen and (min-width: 768px) {
     .Fondo{
         background-image: url(../Imagenes/Login.jpeg);
+        display: flex;
+        align-items: center;
     }
 
     .Login{
         flex-direction: row;
-        margin: auto auto;
+        width: 100%;
         
     }
 
@@ -44,10 +46,11 @@
 
     .imgLogo{
         width: 100%;
+        object-fit: contain;
     }
 
     .formularioLogo{
         width: 60%;
     }
-    
+
 }
