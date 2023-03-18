@@ -13,8 +13,8 @@ function Login() {
         correo: "",
     };
 
-    let subir = async () => {
-        alert("Enviar");
+    const subir = () => {
+        localStorage.setItem("tipoUsuario", "empresa");
     }
 
 
