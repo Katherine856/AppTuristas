@@ -14,18 +14,20 @@
     width: 90%;
     margin: 10px auto;
     display: flex;
+    padding: 0 15px;
     flex-direction: column;
     border-radius: 10px;
     border: 2px solid;
 }
 .campo {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin: 5px 5px;
 }
 
 .ingreso{
-    width: 50%;
+    width: 100%;
     padding: 0 5px;
 }
 
@@ -38,12 +40,17 @@
 
 @media screen and (min-width: 768px) {
     .campos{
-        width: 35%;
+        width: 45%;
         gap: 5px;
     }
 
     .campo{
+        flex-direction: row;
         margin: 0 auto;
+        width: 90%;
+    }
+
+    .ingreso{
         width: 70%;
     }
 }

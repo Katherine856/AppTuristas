@@ -11,10 +11,17 @@
 .cont-nosotros{
     width: 80%;
     display: flex;
+    flex-direction: column;
     margin: 0 auto;
     justify-content: space-around;
 }
 
-.myv{
-    width: 45%;
+@media screen and (min-width: 768px) {
+    .cont-nosotros{
+        flex-direction: row;
+    }
+
+    .myv{
+        width: 45%;
+    }
 }

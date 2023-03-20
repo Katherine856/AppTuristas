@@ -22,8 +22,8 @@ const BodyPrincipal = () => {
                 </Carousel.Item>
             </Carousel>
             <div className="Botones">
-                <Link className='unirse conBorde' smooth to="/Nosotros#formulario"> ¿Quieres ser parte de nosotros? </Link>
-                <Link className='unirse conBorde' smooth to="/Login"> Iniciar Sesión </Link>
+                <Link className='unirse conBorde' to="/Nosotros#formulario"> ¿Quieres ser parte de nosotros? </Link>
+                <Link className='unirse conBorde' to="/Login"> Iniciar Sesión </Link>
             </div>
             <Footer color={color} />
         </>
