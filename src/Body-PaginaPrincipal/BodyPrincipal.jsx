@@ -3,7 +3,7 @@ import './BodyPrincipal.css';
 import { Carousel } from 'react-bootstrap';
 import logo from '../Imagenes/logo.png';
 import carrusel from '../Imagenes/carrusel.png';
-import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 const BodyPrincipal = () => {
@@ -22,8 +22,8 @@ const BodyPrincipal = () => {
                 </Carousel.Item>
             </Carousel>
             <div className="Botones">
-                <HashLink className='unirse conBorde' smooth to="/Nosotros#formulario"> ¿Quieres ser parte de nosotros? </HashLink>
-                <HashLink className='unirse conBorde' smooth to="/Login"> Iniciar Sesión </HashLink>
+                <Link className='unirse conBorde' to="/Nosotros#formulario"> ¿Quieres ser parte de nosotros? </Link>
+                <Link className='unirse conBorde' to="/Login"> Iniciar Sesión </Link>
             </div>
             <Footer color={color} />
         </>
