@@ -26,6 +26,14 @@
     margin: 5px 5px;
 }
 
+.campo>textarea{
+    resize: none;
+}
+
+.campo>select{
+    padding-left: 1px;
+}
+
 .ingreso{
     width: 100%;
     padding: 0 5px;
@@ -37,6 +45,12 @@
     justify-self: center;
     color: #fff;
 }
+
+#descripcion{
+    height: 200px;
+    align-items: center;
+}
+
 
 @media screen and (min-width: 768px) {
     .campos{

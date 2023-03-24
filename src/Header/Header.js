@@ -7,12 +7,11 @@ import { Link } from 'react-router-dom';
 function Header({ color, nombre }) {
 
   const [mostrarNav, setMostrarNav] = useState(false);
-  const [idUsuario, setIdUsuario] = useState(1);
   const [usuario, setUsuario] = useState([]);
   const [tipoUsuario, setTipoUsuario] = useState("");
 
   useEffect(() => {
-    setTipoUsuario(localStorage.getItem("tipoUsuario"));
+    setTipoUsuario(sessionStorage.getItem("tipoUsuario"));
     if (tipoUsuario === "empresa") setUsuario(empresa)
     else if (tipoUsuario === "admin") setUsuario(empresa)
     else setUsuario(publico)
@@ -20,7 +19,8 @@ function Header({ color, nombre }) {
   }, [tipoUsuario])
 
   const limpiarUsuario = () => {
-    localStorage.removeItem("tipoUsuario");
+    sessionStorage.removeItem("tipoUsuario");
+    sessionStorage.removeItem("idEmpresa");
     setTipoUsuario("publico")
   }
 
@@ -50,7 +50,7 @@ function Header({ color, nombre }) {
   const empresa = [
     {
       texto: "Agregar Servicio",
-      link: `/CrearServicio/${idUsuario}`
+      link: `/CrearServicio`
     },
     {
       texto: "Consultar Servicio",
