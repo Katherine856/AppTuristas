@@ -54,7 +54,7 @@ function Header({ color, nombre }) {
     },
     {
       texto: "Consultar Servicio",
-      link: "/Servicios/Hospedaje"
+      link: "/ConsultarServicio"
     },
     {
       texto: "Actualizar Datos",
