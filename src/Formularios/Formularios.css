@@ -33,9 +33,36 @@
 
 .enviar{
     width: 30%;
+    margin: 0 auto;
     margin: 5px auto;
     justify-self: center;
     color: #fff;
+}
+
+.campoImagen{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.subidas{
+    display: flex;
+    flex-direction: column;
+}
+
+.campoImagen>label{
+    width: 200px;
+    margin: 0 auto;
+    background-color: rgb(133, 190, 240);
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+}
+
+form.campos>button:disabled{
+    background-color: darkgray !important;
+    border-color: darkgray !important;
 }
 
 @media screen and (min-width: 768px) {
