@@ -44,6 +44,7 @@ const FormularioServicio = () => {
     formData.append('min', info.min)
     formData.append('max', info.max)
     formData.append('descripcion', info.descripcion)
+    formData.append('idEmpresa', sessionStorage.getItem('idEmpresa'))
     console.log(formData.getAll('imagenes'))
     setEnviando(true)
     axios.post("http://localhost:5000/servicio/insertar", formData,{
@@ -78,7 +79,7 @@ const FormularioServicio = () => {
             {errors.max && touched.max ? (<Alert variant="warning" >{errors.max}</Alert>) : null}
             <div className="campo">
               <label htmlFor="Correo">Descripcion</label>
-              <Field className="conBorde ingreso" style={{ borderColor: color }} name="descripcion" id="descripcion" />
+              <textarea className="conBorde ingreso" style={{ borderColor: color }} name="descripcion" id="descripcion" />
             </div>
             {errors.descripcion && touched.descripcion ? (<Alert variant="warning" >{errors.descripcion}</Alert>) : null}
             <div className="campoImagen">
