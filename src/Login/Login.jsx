@@ -16,14 +16,20 @@ function Login() {
     const loguearse = (values) => {
         axios.get(`http://localhost:5000/login/${values.correo}/${values.contrasena}`)
             .then(res => res.data)
-            .then(res => {
-                sessionStorage.setItem("tipoUsuario", "empresa");
-                sessionStorage.setItem("idEmpresa", res);
-                console.log(sessionStorage.getItem("tipoUsuario"));
-                console.log(sessionStorage.getItem("idEmpresa"));
-                navigate("/")
+            .then(idEmpresa => {
+                if(!idEmpresa){
+                    console.log('Usuario o contraseña no coinciden');
+                }else{
+                    sessionStorage.setItem("tipoUsuario", "empresa");
+                    sessionStorage.setItem("idEmpresa", idEmpresa);
+                    navigate("/")
+                }
             })
-            .catch(()=>console.log("error"));
+            .catch((error)=>{
+                if(error.response && error.response.status === 500){
+                    console.log('Ocurrió un problema');
+                }
+            });
     }
 
 

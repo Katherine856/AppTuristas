@@ -16,7 +16,8 @@ const FormularioServicio = () => {
     min: "",
     max: "",
     descripcion: "",
-    imagenes: []
+    imagenes: [],
+    tipo: 0
   };
 
   const mensajes = {
@@ -24,18 +25,20 @@ const FormularioServicio = () => {
     nombre: "Debe contener más de 4 caracteres",
     min: "El valor mínimo son 10.000 COP",
     max: "El valor máximo son 15'000.000 COP",
-    imagenes: "Se debe subir al menos una imagen"
+    imagenes: "Se debe subir al menos una imagen",
+    tipo: "Elija un servicio"
   }
 
   const validacion = Yup.object().shape({
     nombre: Yup.string().test("len", mensajes.nombre ,(n)=> n.toString().length > 4).required(mensajes.obligatorio),
     min: Yup.number().min(10000, mensajes.min).required(mensajes.obligatorio),
     max: Yup.number().max(15000000, mensajes.max).required(mensajes.obligatorio),
-    descripcion: Yup.string().required(mensajes.obligatorio),
-    imagenes: Yup.mixed().required(mensajes.imagenes)
+    //descripcion: Yup.string().required(mensajes.obligatorio),
+    imagenes: Yup.mixed().required(mensajes.imagenes),
+    tipo: Yup.number().min(1, mensajes.tipo)
   })
 
-  let subir = async (info) => {
+  let subir = async (info, {resetForm}) => {
     const formData = new FormData()
     for(let i= 0; i < info.imagenes.length; i++){
       formData.append('imagenes', info.imagenes[i])
@@ -44,15 +47,20 @@ const FormularioServicio = () => {
     formData.append('min', info.min)
     formData.append('max', info.max)
     formData.append('descripcion', info.descripcion)
+    formData.append('tipo', info.tipo)
     formData.append('idEmpresa', sessionStorage.getItem('idEmpresa'))
-    console.log(formData.getAll('imagenes'))
+    console.log(sessionStorage.getItem('idEmpresa'));
     setEnviando(true)
     axios.post("http://localhost:5000/servicio/insertar", formData,{
       headers:{
         "Content-Type":'multipart/form-data'
       }
     })
-    .then(setEnviando(false))
+    .then(() => {
+      console.log("Exito");
+      setEnviando(false)
+      resetForm();
+    })
   }
 
   return (
@@ -79,7 +87,7 @@ const FormularioServicio = () => {
             {errors.max && touched.max ? (<Alert variant="warning" >{errors.max}</Alert>) : null}
             <div className="campo">
               <label htmlFor="Correo">Descripcion</label>
-              <textarea className="conBorde ingreso" style={{ borderColor: color }} name="descripcion" id="descripcion" />
+              <input className="conBorde ingreso" style={{ borderColor: color }} name="descripcion" id="descripcion" />
             </div>
             {errors.descripcion && touched.descripcion ? (<Alert variant="warning" >{errors.descripcion}</Alert>) : null}
             <div className="campoImagen">
@@ -96,6 +104,15 @@ const FormularioServicio = () => {
                   setFieldValue("imagenes", event.target.files)
                 }} />
             </div>
+            <select onChange={(e) => {
+              setFieldValue('tipo', e.target.value)
+            }}>
+              <option value="0">Elija el tipo de servicio</option>
+              <option value="1">Comida</option>
+              <option value="2">Transporte</option>
+              <option value="3">Hospedaje</option>
+              <option value="4">Turismo</option>
+            </select>
             <div className="subidas">
               {Object.keys(values.imagenes).map((index) => <span key={index} >{values.imagenes[index].name}</span>)}
             </div>
