@@ -14,11 +14,22 @@ function BodyServicio() {
     let { id } = useParams();
 
     let [servicio, setServicio] = useState({});
+    let [imagenes, setImagenes] = useState([]);
 
     useEffect(() => {
         axios
         .get('http://localhost:5000/servicio/'+id)
         .then( (response) => {
+            // response.data.imagenes.map( img => {
+            //    // console.log(img);
+            //     const base64String = btoa(
+            //         String.fromCharCode(...new Uint8Array(img.buffer.data))
+            //     );
+            //     const dataUrl = `data:${img.contentType}; base64, ${base64String}`;
+            //     let tempImg = [...imagenes];
+            //     tempImg.push(dataUrl)
+            //     setImagenes(tempImg);
+            // })
             setServicio(response.data);
         })
         .catch( (error) => {
@@ -26,18 +37,21 @@ function BodyServicio() {
         })
     },[id]);
 
+    // useEffect(() => {
+    //     console.log(imagenes);
+    // }, [imagenes])
+
     let color = servicio.C_T_Servicio;
 
     return (
         <>
             <Header color={color} nombre={servicio.N_Servicio} />
             <Carousel className='carrusel servicio conBorde' style={{borderColor: color}}>
-                <Carousel.Item className='itemCarrusel'>
-                    <img src={logo} alt="img 1" />
-                </Carousel.Item>
-                <Carousel.Item className='itemCarrusel'>
-                    <img src={carrusel} alt="img 2" />
-                </Carousel.Item>
+                {imagenes !== [] ? imagenes.map(( img ) =>{
+                    <Carousel.Item className='itemCarrusel'>
+                        <img src={img} alt="img 1" />
+                    </Carousel.Item>
+                }) : null}
             </Carousel>
             <div className="info conBorde" style={{borderColor: color}}>
                 <h3>{servicio.N_Empresa}</h3>
