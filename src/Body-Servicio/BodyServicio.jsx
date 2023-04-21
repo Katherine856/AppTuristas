@@ -8,6 +8,7 @@ import carrusel from '../Imagenes/carrusel.png';
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import axios from 'axios';
 import Footer from "../Footer/Footer";
+import { Image } from 'react-image'
 
 function BodyServicio() {
 
@@ -20,16 +21,11 @@ function BodyServicio() {
         axios
         .get('http://localhost:5000/servicio/'+id)
         .then( (response) => {
-            // response.data.imagenes.map( img => {
-            //    // console.log(img);
-            //     const base64String = btoa(
-            //         String.fromCharCode(...new Uint8Array(img.buffer.data))
-            //     );
-            //     const dataUrl = `data:${img.contentType}; base64, ${base64String}`;
-            //     let tempImg = [...imagenes];
-            //     tempImg.push(dataUrl)
-            //     setImagenes(tempImg);
-            // })
+            let tempImg = [];
+            response.data.imgURLs.map( url => {
+                tempImg.push(url)
+            })
+            setImagenes(tempImg);
             setServicio(response.data);
         })
         .catch( (error) => {
@@ -37,20 +33,18 @@ function BodyServicio() {
         })
     },[id]);
 
-    // useEffect(() => {
-    //     console.log(imagenes);
-    // }, [imagenes])
-
     let color = servicio.C_T_Servicio;
 
     return (
         <>
             <Header color={color} nombre={servicio.N_Servicio} />
             <Carousel className='carrusel servicio conBorde' style={{borderColor: color}}>
-                {imagenes !== [] ? imagenes.map(( img ) =>{
-                    <Carousel.Item className='itemCarrusel'>
+                {imagenes !== [] ? imagenes.map(( img, index ) =>{
+                    return( 
+                    <Carousel.Item key={index} className='itemCarrusel'>
                         <img src={img} alt="img 1" />
                     </Carousel.Item>
+                    )
                 }) : null}
             </Carousel>
             <div className="info conBorde" style={{borderColor: color}}>
