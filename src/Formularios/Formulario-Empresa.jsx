@@ -54,7 +54,8 @@ const FormularioEmpresa = () => {
         let facebook = values.facebook === '' ? 'null' : values.facebook;
         let instagram = values.instagram === '' ? 'null' : values.instagram;
         let whatsapp = values.whatsapp === '' ? 'null' : values.whatsapp;
-        axios.get(`http://localhost:5000/empresa/insertar/${values.rut}/${values.nombre}/${values.correo}/${values.contrasena}/${facebook}/${instagram}/${whatsapp}/${values.telefono}/${values.direccion}`)
+        let direccion = values.direccion.replace('#', '').replace('-', ' ');
+        axios.get(`http://localhost:5000/empresa/insertar/${values.rut}/${values.nombre}/${values.correo}/${values.contrasena}/${facebook}/${instagram}/${whatsapp}/${values.telefono}/${direccion}`)
         .then(res => console.log(res));
         
     }
