@@ -108,13 +108,13 @@ const FormularioEmpresa = () => {
                     {errors.whatsapp && touched.whatsapp ? (<Alert variant="warning" >{errors.whatsapp}</Alert>) : null}
 
                     <div className="campo">
-                        <label htmlFor="Correo">Correo</label>
+                        <label htmlFor="correo">Correo</label>
                         <Field className="conBorde ingreso" style={{ borderColor: "#D94E9F" }} name="correo" id="correo" />
                     </div>
                     {errors.correo && touched.correo ? (<Alert variant="warning" >{errors.correo}</Alert>) : null}
 
                     <div className="campo">
-                        <label htmlFor="Contraseña">Contraseña</label>
+                        <label htmlFor="contrasena">Contraseña</label>
                         <Field className="conBorde ingreso" style={{ borderColor: "#D94E9F" }} name="contrasena" id="contrasena" />
                     </div>
                     {errors.contrasena && touched.contrasena ? (<Alert variant="warning" >{errors.contrasena}</Alert>) : null}

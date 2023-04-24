@@ -2,35 +2,31 @@ import Header from "../Header/Header";
 import Tarjeta from "../Tarjeta/Tarjeta";
 import '../index.css';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Navigate, useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import { fetchDataServicios } from "./llamadasAPI";
 
 const BodyServEmpresa = () => {
 
-    let [ servicios, setServicio ] = useState([]);
-
+    let [ servicios, setServicios ] = useState([]);
     const color = "#D94E9F";
+    
     const nombre = "Servicios Actuales";
     let idEmpresa = sessionStorage.getItem('idEmpresa');
     
 
     useEffect(() => {
-        axios
-        .get(`http://localhost:5000/empresa/servicios/${idEmpresa}`)
-        .then( (response) => {
-            setServicio(response.data);
-        })
-        .catch( (error) => {
-            console.log(error);
-        })
+        async function fetchAPI(){
+            const data = await fetchDataServicios(idEmpresa)
+            setServicios(data)
+        }
+        fetchAPI();
     }, [idEmpresa]);
 
     return (
         <>
             <Header color={color} nombre={nombre} />
             <div className="servicios">
-                {servicios.map((servicio, index) =>
+                {servicios.length ? servicios.map((servicio, index) =>
                     <Tarjeta
                         key={index}
                         to={"/servicio/" + servicio.Id_Servicio}
@@ -39,7 +35,7 @@ const BodyServEmpresa = () => {
                         min={servicio.V_Min_Servicio}
                         max={servicio.V_Max_Servicio}
                         color={servicio.C_T_Servicio} />
-                )}
+                ) : <h2>No ha agregado servicios</h2>}
             </div>
             <Footer color={color} />
 

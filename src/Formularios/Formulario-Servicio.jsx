@@ -4,12 +4,15 @@ import * as Yup from 'yup'
 import Header from "../Header/Header";
 import './Formularios.css';
 import { Alert } from 'react-bootstrap'
-import axios from 'axios';
+import { Notificacion } from './componentes/Notificacion'
+import { formatearData, enviarServicio } from "./handleSubmit";
 
 const FormularioServicio = () => {
 
   const color = "#D94E9F";
-  const [enviando, setEnviando] = useState(false)
+  const [enviando, setEnviando] = useState(false);
+  const [mostrarNotif, setMostrarNotif] = useState(false);
+  const [ultimoAgregado, setUltimoAgregado] = useState({})
 
   let initialValues = {
     nombre: "",
@@ -30,7 +33,7 @@ const FormularioServicio = () => {
   }
 
   const validacion = Yup.object().shape({
-    nombre: Yup.string().test("len", mensajes.nombre ,(n)=> n.toString().length > 4).required(mensajes.obligatorio),
+    nombre: Yup.string().test("len", mensajes.nombre, (n) => n.toString().length > 4).required(mensajes.obligatorio),
     min: Yup.number().min(10000, mensajes.min).required(mensajes.obligatorio),
     max: Yup.number().max(15000000, mensajes.max).required(mensajes.obligatorio),
     //descripcion: Yup.string().required(mensajes.obligatorio),
@@ -38,36 +41,24 @@ const FormularioServicio = () => {
     tipo: Yup.number().min(1, mensajes.tipo)
   })
 
-  let subir = async (info, {resetForm}) => {
-    const formData = new FormData()
-    for(let i= 0; i < info.imagenes.length; i++){
-      formData.append('imagenes', info.imagenes[i])
-    }
-    formData.append('nombre', info.nombre)
-    formData.append('min', info.min)
-    formData.append('max', info.max)
-    formData.append('descripcion', info.descripcion)
-    formData.append('tipo', info.tipo)
-    formData.append('idEmpresa', sessionStorage.getItem('idEmpresa'))
-    console.log(sessionStorage.getItem('idEmpresa'));
-    setEnviando(true)
-    axios.post("http://localhost:5000/servicio/insertar", formData,{
-      headers:{
-        "Content-Type":'multipart/form-data'
-      }
-    })
-    .then(() => {
-      console.log("Exito");
-      setEnviando(false)
-      resetForm();
-    })
+  let subir = async (info, { resetForm }) => {
+    let formData = formatearData(info);
+    setEnviando(true);
+    let result = await enviarServicio(formData);
+    
+    setEnviando(false)
+    if(result !== false){
+      setUltimoAgregado(result)
+      setMostrarNotif(true);
+      resetForm();  
+    } 
   }
 
   return (
     <>
       <Header color={color} nombre="principal" />
       <Formik className="formulario" initialValues={initialValues} validationSchema={validacion} onSubmit={subir}>
-        {({values, errors, touched, setFieldValue, handleSubmit}) => (
+        {({ values, errors, touched, setFieldValue, handleSubmit }) => (
           <Form className="campos" style={{ borderColor: color }} encType="multipart/form-data" onSubmit={handleSubmit}>
             <h4 className="titulo-form" style={{ color: color, borderColor: color }}> Registar un servicio </h4>
             <div className="campo">
@@ -86,8 +77,8 @@ const FormularioServicio = () => {
             </div>
             {errors.max && touched.max ? (<Alert variant="warning" >{errors.max}</Alert>) : null}
             <div className="campo">
-              <label htmlFor="Correo">Descripcion</label>
-              <input className="conBorde ingreso" style={{ borderColor: color }} name="descripcion" id="descripcion" />
+              <label htmlFor="descripcion">Descripcion</label>
+              <Field as={'textarea'} className="conBorde ingreso" style={{ borderColor: color }} name="descripcion" id="descripcion" />
             </div>
             {errors.descripcion && touched.descripcion ? (<Alert variant="warning" >{errors.descripcion}</Alert>) : null}
             <div className="campoImagen">
@@ -104,7 +95,7 @@ const FormularioServicio = () => {
                   setFieldValue("imagenes", event.target.files)
                 }} />
             </div>
-            <select onChange={(e) => {
+            <Field as='select' id='tipo' name='tipo' onChange={(e) => {
               setFieldValue('tipo', e.target.value)
             }}>
               <option value="0">Elija el tipo de servicio</option>
@@ -112,7 +103,7 @@ const FormularioServicio = () => {
               <option value="2">Transporte</option>
               <option value="3">Hospedaje</option>
               <option value="4">Turismo</option>
-            </select>
+            </Field>
             <div className="subidas">
               {Object.keys(values.imagenes).map((index) => <span key={index} >{values.imagenes[index].name}</span>)}
             </div>
@@ -122,6 +113,7 @@ const FormularioServicio = () => {
           </Form>
         )}
       </Formik>
+      <Notificacion onClose={() => setMostrarNotif(false)} show={mostrarNotif} delay={6000} id={ultimoAgregado.id} nombre={ultimoAgregado.nombre}/>
     </>
   )
 }

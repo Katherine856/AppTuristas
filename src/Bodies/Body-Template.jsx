@@ -45,7 +45,7 @@ const BodyTemplate = () => {
         <>
             <Header color={secciones.get(seccion)?.color} nombre={seccion} />
             <div className="servicios">
-                {servicios.map((servicio, index) =>
+                {servicios.length ? servicios.map((servicio, index) =>
                     <Tarjeta
                         key={index}
                         to={"/servicio/" + servicio.Id_Servicio}
@@ -54,7 +54,7 @@ const BodyTemplate = () => {
                         min={servicio.V_Min_Servicio}
                         max={servicio.V_Max_Servicio}
                         color={secciones.get(seccion)?.color} />
-                )}
+                ) : <h2>Hubo un problema buscando los servicios</h2>}
             </div>
             <Footer color={secciones.get(seccion)?.color} />
 
