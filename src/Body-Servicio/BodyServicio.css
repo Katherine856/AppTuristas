@@ -29,11 +29,36 @@
   margin: 0px;
 }
 
+.Informacion{
+  margin: 10px auto;
+  width: 90%;
+}
+
+.Map{
+  display: flex;
+  place-content: center;
+  margin: auto;
+}
+
+.Map>a{
+  width: 30%;
+}
+
+.ImgMap{
+  width: 100%;
+}
+
 @media screen and (min-width: 768px) {
   .carrusel.servicio{
     width: 80%;
   }
   .info{
     width: 80%;
+  }
+
+  .Informacion{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
 }
