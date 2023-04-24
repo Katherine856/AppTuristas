@@ -124,7 +124,8 @@ nav{
 .carrusel img{
   width: 100%;
   height: calc(30vh - 2px);
-  object-fit: contain;
+  object-fit: cover;
+
 }
 
 .carrusel a span, .carrusel .carousel-indicators{

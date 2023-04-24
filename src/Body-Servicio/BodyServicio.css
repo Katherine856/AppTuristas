@@ -41,11 +41,21 @@
 }
 
 .Map>a{
-  width: 30%;
+  width: 10%;
+  padding: 5px;
 }
 
 .ImgMap{
   width: 100%;
+}
+
+.comentar{
+  display: flex;
+  place-content: center;
+  margin: 0 auto;
+  width: 50%;
+  justify-self: center;
+  color: #fff;
 }
 
 @media screen and (min-width: 768px) {
@@ -60,5 +70,9 @@
     width: 80%;
     display: grid;
     grid-template-columns: 50% 50%;
+  }
+
+  .Map>a{
+    width: 30%;
   }
 }

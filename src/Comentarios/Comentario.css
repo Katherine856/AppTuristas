@@ -1,0 +1,28 @@
+.Comentario{
+    width: 90%;
+    margin: 10px auto;
+    padding: 1%;
+}
+
+.star-wrapper-mostrar {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+  }
+
+  .star-mostrar {
+    padding-bottom: 20px;
+  }
+  .star-mostrar > button {
+    background-color: transparent;
+    border: none;
+  }
+
+@media screen and (min-width: 768px) {
+    .Comentario{
+        width: 80%;
+        
+    }
+}

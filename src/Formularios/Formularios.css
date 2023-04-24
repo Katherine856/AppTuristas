@@ -87,10 +87,35 @@ form.campos>button:disabled{
     border-color: darkgray !important;
 }
 
+.star-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .review-label {
+    position: absolute;
+    margin-top: -100px;
+  }
+  
+  .star > button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+
 @media screen and (min-width: 768px) {
     .campos{
         width: 45%;
         gap: 5px;
+    }
+
+    .camposComen{
+        width: 80%;
     }
 
     .campo{

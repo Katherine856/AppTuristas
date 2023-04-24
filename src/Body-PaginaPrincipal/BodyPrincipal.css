@@ -22,13 +22,43 @@
     flex-direction: column;
 }
 
+.Registro{
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.item{
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+img{
+    margin: 0 auto;
+    width: 30%;
+}
+
+
 @media screen and (min-width: 768px) {
     .unirse{
-        width: 30%;
+        width: 50%;
     }
 
     .Botones{
         flex-direction: row;
         
+    }
+
+    .Registro{
+        flex-direction: row;
+    }
+
+    .item{
+        margin: auto;
+        flex-direction: row;
     }
   }

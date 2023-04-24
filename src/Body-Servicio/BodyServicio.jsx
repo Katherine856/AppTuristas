@@ -8,6 +8,8 @@ import carrusel from '../Imagenes/carrusel.png';
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Footer from "../Footer/Footer";
 import { fetchDataServicio, fetchImagenesServicio } from './llamadasAPI';
+import Comentarios from '../Comentarios/Comentario';
+import FormularioComentario from '../Formularios/Formulario-Comentario';
 
 function BodyServicio() {
 
@@ -16,6 +18,8 @@ function BodyServicio() {
     let [servicio, setServicio] = useState({});
     let [imagenes, setImagenes] = useState([]);
     let [color, setColor] = useState('white');
+
+    let nombre = 'otro';
 
     useEffect(() => {
         async function fetchData(id) {
@@ -31,7 +35,7 @@ function BodyServicio() {
     return (
         <>
             <Header color={color} nombre={servicio.N_Servicio} />
-            <Carousel className='carrusel servicio conBorde' style={{ borderColor: color}}>
+            <Carousel className='carrusel servicio conBorde' style={{ borderColor: color }}>
                 {imagenes?.length !== 0 ? imagenes?.map((img, index) => {
                     return (
                         <Carousel.Item key={index} className='itemCarrusel'>
@@ -56,12 +60,19 @@ function BodyServicio() {
                     <p>{servicio.C_Empresa}</p>
                 </div>
                 <div className='Map'>
-                <Link target='_blank' rel='noopener noreferrer' to={`https://www.google.com/maps/search/${servicio.D_Empresa} Bogota`}><img className='ImgMap' src={maps} alt="maps" /></Link>
+                    <Link target='_blank' rel='noopener noreferrer' to={`https://www.google.com/maps/search/${servicio.D_Empresa} Bogota`}><img className='ImgMap' src={maps} alt="maps" /></Link>
                 </div>
             </div>
-
-
+            <Comentarios color={color} />
+            {nombre === 'principal'
+                && <button className="comentar conBorde " style={{ borderColor: color, backgroundColor: color }} type="submit">Agregar un comentario</button>
+            }
+            {nombre !== 'principal'
+                && <FormularioComentario color={color}/>
+            }
             <Footer color={color} />
+
+
         </>
     )
 }
