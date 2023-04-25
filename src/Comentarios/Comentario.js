@@ -21,6 +21,7 @@ function Comentario({ color }) {
                             return (
                                 <FaStar
                                     className="FaStar"
+                                    key={index}
                                     size={20}
                                     style={{
                                         color:

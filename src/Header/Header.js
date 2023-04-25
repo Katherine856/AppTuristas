@@ -12,15 +12,16 @@ function Header({ color, nombre }) {
 
   useEffect(() => {
     setTipoUsuario(sessionStorage.getItem("tipoUsuario"));
-    if (tipoUsuario === "empresa") setUsuario(empresa)
-    else if (tipoUsuario === "admin") setUsuario(empresa)
+    if (tipoUsuario === "Empresa") setUsuario(empresa)
+    else if (tipoUsuario === "Administrador") setUsuario(administrador)
+    else if (tipoUsuario === "Usuario") setUsuario(user)
     else setUsuario(publico)
 
   }, [tipoUsuario])
 
   const limpiarUsuario = () => {
     sessionStorage.removeItem("tipoUsuario");
-    sessionStorage.removeItem("idEmpresa");
+    sessionStorage.removeItem("idUsuario");
     setTipoUsuario("publico")
   }
 
@@ -47,6 +48,34 @@ function Header({ color, nombre }) {
     }
   ]
 
+  const user = [
+    {
+      texto: "Hospedaje",
+      link: "/Servicios/Hospedaje"
+    },
+    {
+      texto: "Comida",
+      link: "/Servicios/Comida"
+    },
+    {
+      texto: "Transporte",
+      link: "/Servicios/Transporte"
+    },
+    {
+      texto: "Turismo",
+      link: "/Servicios/Turismo"
+    },
+    {
+      texto: "Sobre Nosotros",
+      link: "/Nosotros"
+    },
+    {
+      texto: "Cerrar Sesión",
+      link: "/",
+      accion: limpiarUsuario
+    }
+  ]
+
   const empresa = [
     {
       texto: "Agregar Servicio",
@@ -67,12 +96,32 @@ function Header({ color, nombre }) {
     }
   ]
 
+  const administrador = [
+    {
+      texto: "Ver Servicios",
+      link: `/CrearServicio`
+    },
+    {
+      texto: "Ver Empresas",
+      link: "/ConsultarServicio"
+    },
+    {
+      texto: "Actualizar Datos",
+      link: "/Servicios/Hospedaje"
+    },
+    {
+      texto: "Cerrar Sesión",
+      link: "/",
+      accion: limpiarUsuario
+    }
+  ]
+
   return (
     <div className="Header">
       <header style={{ backgroundColor: color }} className="Header-header">
         <Link className="linkPrincipal" to='/'><img src={logo} className="Header-logo" alt="logo" /></Link>
         <div>
-            {(tipoUsuario !== "empresa" && tipoUsuario !== "admin") &&
+            {(tipoUsuario !== "Empresa" && tipoUsuario !== "Administrador") &&
               <input type="text" className="Header-buscar" placeholder="Buscar" />
             }
           <FaBars onClick={() => { setMostrarNav(!mostrarNav) }} />

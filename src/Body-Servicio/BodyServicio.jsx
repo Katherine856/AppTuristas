@@ -1,6 +1,6 @@
 import './BodyServicio.css';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import { Carousel } from 'react-bootstrap';
 import maps from '../Imagenes/maps.png';
@@ -13,13 +13,15 @@ import FormularioComentario from '../Formularios/Formulario-Comentario';
 
 function BodyServicio() {
 
+    const navigate = useNavigate();
     let { id } = useParams();
 
     let [servicio, setServicio] = useState({});
     let [imagenes, setImagenes] = useState([]);
     let [color, setColor] = useState('white');
+    let [mostrarInputComent, setMostrarInputComent] = useState(false);
 
-    let nombre = 'otro';
+    let nombre = 'principal';
 
     useEffect(() => {
         async function fetchData(id) {
@@ -30,7 +32,15 @@ function BodyServicio() {
             setImagenes(images);
         }
         fetchData(id)
+        if(sessionStorage.getItem('idUsuario')) setMostrarInputComent(true)
     }, [id]);
+
+    function Comentar(){
+        if(sessionStorage.getItem('idUsuario')){
+            setMostrarInputComent(true)
+        } 
+        else navigate(`/login?servicio=${id}`)       
+    }
 
     return (
         <>
@@ -56,19 +66,20 @@ function BodyServicio() {
                         <Link to={servicio.I_Empresa}><FaInstagram /></Link>
                         <Link to={servicio.W_Empresa}><FaWhatsapp /></Link>
                     </div>
-                    <p>{servicio.T_Empresa}</p>
-                    <p>{servicio.C_Empresa}</p>
                 </div>
                 <div className='Map'>
+                    <p>Telefono: {servicio.T_Empresa}</p>
+                    <p>Direccion: {servicio.C_Empresa}</p>
                     <Link target='_blank' rel='noopener noreferrer' to={`https://www.google.com/maps/search/${servicio.D_Empresa} Bogota`}><img className='ImgMap' src={maps} alt="maps" /></Link>
                 </div>
             </div>
             <Comentarios color={color} />
-            {nombre === 'principal'
-                && <button className="comentar conBorde " style={{ borderColor: color, backgroundColor: color }} type="submit">Agregar un comentario</button>
+            {console.log(nombre === 'principal')}
+            {mostrarInputComent === false
+                && <button className="comentar conBorde " style={{ borderColor: color, backgroundColor: color }} type="submit" onClick={Comentar}>Agregar un comentario</button>
             }
-            {nombre !== 'principal'
-                && <FormularioComentario color={color}/>
+            {mostrarInputComent === true
+                && <FormularioComentario color={color} idServ={id}/>
             }
             <Footer color={color} />
 

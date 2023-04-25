@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const HOST = 'http://localhost:5000/servicio';
+
 const fetchDataServicio = async id =>
     axios
         .get(`${HOST}/${id}`)

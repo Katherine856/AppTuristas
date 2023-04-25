@@ -43,15 +43,18 @@ const FormularioServicio = () => {
 
   let subir = async (info, { resetForm }) => {
     let formData = formatearData(info);
+
+    console.log(formData.values)
+    
     setEnviando(true);
     let result = await enviarServicio(formData);
-    
+
     setEnviando(false)
-    if(result !== false){
+    if (result !== false) {
       setUltimoAgregado(result)
       setMostrarNotif(true);
-      resetForm();  
-    } 
+      resetForm();
+    }
   }
 
   return (
@@ -66,6 +69,18 @@ const FormularioServicio = () => {
               <Field className="conBorde ingreso" style={{ borderColor: color }} name="nombre" id="nombre" />
             </div>
             {errors.nombre && touched.nombre ? (<Alert variant="warning" >{errors.nombre}</Alert>) : null}
+            <div className="campo">
+              <label htmlFor="whatsapp"></label>
+              <Field className='ingreso conBorde' as='select' id='tipo' name='tipo' style={{ borderColor: color }} onChange={(e) => {
+                setFieldValue('tipo', e.target.value)
+              }}>
+                <option value="0">Elija el tipo de servicio</option>
+                <option value="1">Comida</option>
+                <option value="2">Transporte</option>
+                <option value="3">Hospedaje</option>
+                <option value="4">Turismo</option>
+              </Field>
+            </div>
             <div className="campo">
               <label htmlFor="whatsapp">Precio mínimo</label>
               <Field className="conBorde ingreso" style={{ borderColor: color }} name="min" id="min" />
@@ -95,15 +110,6 @@ const FormularioServicio = () => {
                   setFieldValue("imagenes", event.target.files)
                 }} />
             </div>
-            <Field as='select' id='tipo' name='tipo' onChange={(e) => {
-              setFieldValue('tipo', e.target.value)
-            }}>
-              <option value="0">Elija el tipo de servicio</option>
-              <option value="1">Comida</option>
-              <option value="2">Transporte</option>
-              <option value="3">Hospedaje</option>
-              <option value="4">Turismo</option>
-            </Field>
             <div className="subidas">
               {Object.keys(values.imagenes).map((index) => <span key={index} >{values.imagenes[index].name}</span>)}
             </div>
@@ -113,7 +119,7 @@ const FormularioServicio = () => {
           </Form>
         )}
       </Formik>
-      <Notificacion onClose={() => setMostrarNotif(false)} show={mostrarNotif} delay={6000} id={ultimoAgregado.id} nombre={ultimoAgregado.nombre}/>
+      <Notificacion onClose={() => setMostrarNotif(false)} show={mostrarNotif} delay={6000} id={ultimoAgregado.id} nombre={ultimoAgregado.nombre} />
     </>
   )
 }

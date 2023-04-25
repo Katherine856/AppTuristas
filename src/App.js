@@ -9,11 +9,11 @@ import BodyServEmpresa from './Body-ServEmpresa/ServEmpresa';
 
 const App = () => {
 
+
     return (
         <>
             <Routes>
                 <Route path='/' element={<BodyPrincipal />} />
-                <Route path='/:id' element={<BodyServicio />} />
                 <Route path='/Servicios/:seccion' element={<BodyTemplate />} />
                 <Route path='/Nosotros' element={<BodyNosotros />} />
                 <Route path='/servicio/:id' element={<BodyServicio />} />

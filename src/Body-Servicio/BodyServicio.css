@@ -38,11 +38,17 @@
   display: flex;
   place-content: center;
   margin: auto;
+  flex-direction: column;
+  justify-content: center;
+}
+.Map>p{
+  margin: auto;
 }
 
 .Map>a{
   width: 10%;
   padding: 5px;
+  margin: auto;
 }
 
 .ImgMap{
@@ -73,6 +79,6 @@
   }
 
   .Map>a{
-    width: 30%;
+    width: 10%;
   }
 }
