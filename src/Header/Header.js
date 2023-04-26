@@ -98,12 +98,8 @@ function Header({ color, nombre }) {
 
   const administrador = [
     {
-      texto: "Ver Servicios",
-      link: `/CrearServicio`
-    },
-    {
       texto: "Ver Empresas",
-      link: "/ConsultarServicio"
+      link: "/ConsultarEmpresas"
     },
     {
       texto: "Actualizar Datos",

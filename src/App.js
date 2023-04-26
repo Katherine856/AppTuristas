@@ -6,6 +6,8 @@ import BodyTemplate from './Bodies/Body-Template';
 import Login from './Login/Login';
 import FormularioServicio from './Formularios/Formulario-Servicio';
 import BodyServEmpresa from './Body-ServEmpresa/ServEmpresa';
+import CrearUsuario from './Login/CrearUsuario';
+import BodyEmpresas from './Bodies/Body-Empresa';
 
 const App = () => {
 
@@ -18,8 +20,10 @@ const App = () => {
                 <Route path='/Nosotros' element={<BodyNosotros />} />
                 <Route path='/servicio/:id' element={<BodyServicio />} />
                 <Route path='/Login' element={<Login />} />
+                <Route path='/RegistroUsuario' element={<CrearUsuario />} />
                 <Route path='/CrearServicio' element={<FormularioServicio />} />
                 <Route path='/ConsultarServicio' element={<BodyServEmpresa />} />
+                <Route path='/ConsultarEmpresas' element={<BodyEmpresas />} />
                 <Route path='*' element={<>404</>} />
             </Routes>
         </>

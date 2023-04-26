@@ -13,7 +13,12 @@ const fetchImagenesServicio = async id =>
     axios
         .get(`${HOST}/imagenes/${id}`)
         .then((response) => response.data)
-        .catch((error) => [ ])
+        .catch((error) => [])
 
+const fetchDataComen = async id =>
+    axios
+        .get(`${HOST}/vercomen/${id}`)
+        .then((response) => response.data)
+        .catch((error) => [])
 
-export { fetchDataServicio, fetchImagenesServicio };
+export { fetchDataServicio, fetchImagenesServicio, fetchDataComen };

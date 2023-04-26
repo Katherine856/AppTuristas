@@ -1,0 +1,14 @@
+.tarjetaEmpresa{
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid;
+    margin: 0 auto;
+    transition: .3s;
+    padding: 5px;
+  }
+
+.estado{
+    margin: 0 auto;
+    justify-self: center;
+    color: #fff;
+}

@@ -21,7 +21,7 @@ function Login() {
             .then(res => res.data)
             .then(id => {
                 if (!id) {
-                    console.log('Usuario o contraseña no coinciden');
+                    document.getElementById("error").innerHTML = 'Usuario, tipo o contraseña no coinciden';
                 } else {
                     sessionStorage.setItem("tipoUsuario", values.tipo);
                     sessionStorage.setItem("idUsuario", id);
@@ -66,6 +66,7 @@ function Login() {
                             <label htmlFor="contrasena" style={{ color: "#D94E9F" }}>Contraseña</label>
                             <Field className="conBorde ingreso" style={{ borderColor: "#D94E9F" }} name="contrasena" id="contrasena" />
                         </div>
+                        <h6 style={{ color: "#D94E9F" }} id="error"></h6>
                         <button className="enviar conBorde " style={{ borderColor: "#D94E9F", backgroundColor: "#D94E9F" }} type="submit">Ingresar</button>
                     </Form>
                 )}

@@ -7,7 +7,7 @@ import maps from '../Imagenes/maps.png';
 import carrusel from '../Imagenes/carrusel.png';
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Footer from "../Footer/Footer";
-import { fetchDataServicio, fetchImagenesServicio } from './llamadasAPI';
+import { fetchDataComen, fetchDataServicio, fetchImagenesServicio } from './llamadasAPI';
 import Comentarios from '../Comentarios/Comentario';
 import FormularioComentario from '../Formularios/Formulario-Comentario';
 
@@ -16,6 +16,7 @@ function BodyServicio() {
     const navigate = useNavigate();
     let { id } = useParams();
 
+    let [comentario, setComentario ] = useState([]);
     let [servicio, setServicio] = useState({});
     let [imagenes, setImagenes] = useState([]);
     let [color, setColor] = useState('white');
@@ -30,6 +31,8 @@ function BodyServicio() {
             setColor(data.C_T_Servicio);
             const images = await fetchImagenesServicio(id);
             setImagenes(images);
+            const dataComen = await fetchDataComen(id);
+            setComentario(dataComen);
         }
         fetchData(id)
         if(sessionStorage.getItem('idUsuario')) setMostrarInputComent(true)
@@ -73,8 +76,16 @@ function BodyServicio() {
                     <Link target='_blank' rel='noopener noreferrer' to={`https://www.google.com/maps/search/${servicio.D_Empresa} Bogota`}><img className='ImgMap' src={maps} alt="maps" /></Link>
                 </div>
             </div>
-            <Comentarios color={color} />
-            {console.log(nombre === 'principal')}
+            {comentario.length ? comentario.map((comen, index) =>
+                <Comentarios
+                    key={index}
+                    titulo={comen.Titulo_Calificacion} 
+                    usuario={comen.N_Usuario} 
+                    valor={comen.Valor_Calificacion}
+                    descripcion={comen.Desc_Calificacion}
+                    color={color} />
+            ): null}
+            
             {mostrarInputComent === false
                 && <button className="comentar conBorde " style={{ borderColor: color, backgroundColor: color }} type="submit" onClick={Comentar}>Agregar un comentario</button>
             }

@@ -43,7 +43,7 @@ const BodyPrincipal = () => {
                         </div>
                         <div className='item'>
                             <img src={usuario} alt="img 1" />
-                            <Link className='unirse conBorde' to="/Nosotros"> Regristro Usuarios </Link>
+                            <Link className='unirse conBorde' to="/RegistroUsuario"> Regristro Usuarios </Link>
                         </div>
 
                     </div>

@@ -11,7 +11,7 @@ const BodyServEmpresa = () => {
     const color = "#D94E9F";
     
     const nombre = "Servicios Actuales";
-    let idEmpresa = sessionStorage.getItem('idEmpresa');
+    let idEmpresa = sessionStorage.getItem('idUsuario');
     
 
     useEffect(() => {

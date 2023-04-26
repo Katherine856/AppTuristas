@@ -7,6 +7,7 @@ import { Alert } from 'react-bootstrap'
 import { Notificacion } from './componentes/Notificacion'
 import { enviarComentario, formatearDataComen } from "./handleSubmit";
 import { FaStar } from 'react-icons/fa';
+import axios from 'axios';
 
 
 const FormularioComentario = ({ color, idServ }) => {
@@ -34,25 +35,39 @@ const FormularioComentario = ({ color, idServ }) => {
     descripcion: Yup.string().required(mensajes.obligatorio)
   })
 
-  let subir = async (info, { resetForm }) => {
-    let formData = formatearDataComen(info, idServ);
+  let subir = (values) => {
+    //let formData = formatearDataComen(info, idServ);
 
-    console.log(formData.values)
+    //console.log(formData.values)
 
     setEnviando(true);
-    let result = await enviarComentario(formData);
-    
+    //let result = await enviarComentario(formData);
+    let idUser = sessionStorage.getItem('idUsuario')
+
+    axios.get(`http://localhost:5000/servicio/insertarcomentario/${values.titulo}/${values.descripcion}/${values.valor}/${idServ}/${idUser}`)
+      .then(res => res.data)
+      .then(res => {
+        if (!res) {
+          document.getElementById("error").innerHTML = 'Usuario, tipo o contraseña no coinciden';
+        } else {
+          alert("Correctamente")
+        }
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 500) {
+          console.log('Ocurrió un problema');
+        }
+      });
+
     setEnviando(false)
-    if(result !== false){
-      resetForm();  
-    } 
+
   }
 
 
   return (
     <>
-    <Formik className="formulario" initialValues={initialValues} validationSchema={validacion} onSubmit={subir}>
-    {({ values, errors, touched , handleSubmit, setFieldValue }) => (
+      <Formik className="formulario" initialValues={initialValues} validationSchema={validacion} onSubmit={subir}>
+        {({ values, errors, touched, handleSubmit, setFieldValue }) => (
           <Form className="campos camposComen" style={{ borderColor: color }} encType="multipart/form-data" onSubmit={handleSubmit}>
             <h4 className="titulo-form" style={{ color: color, borderColor: color }}> Registar un Comentario </h4>
             <div className="campo">
@@ -88,9 +103,9 @@ const FormularioComentario = ({ color, idServ }) => {
                               ? "#000"
                               : "#ccc",
                         }}
-                        
+
                         value={ratingValue}
-                        />
+                      />
                     </button>
                   );
                 })}
@@ -104,7 +119,7 @@ const FormularioComentario = ({ color, idServ }) => {
             <button className="enviar conBorde " style={{ borderColor: color, backgroundColor: color }} type="submit" disabled={enviando} >Enviar</button>
           </Form>
         )}
-    </Formik>
+      </Formik>
 
     </>
   )

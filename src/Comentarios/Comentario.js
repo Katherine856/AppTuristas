@@ -5,14 +5,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
-function Comentario({ color }) {
+function Comentario({ titulo, usuario, valor, descripcion, color }) {
 
-    const calificacion = 3
+    const calificacion = valor;
 
     return (
         <>
             <div style={{ borderColor: color }} className="Comentario conBorde">
-                <h1>Nombre y Titulo</h1>
+                <h4>{titulo} - {usuario}</h4>
                 <div className=".star-wrapper-mostrar">
                     <div className="star-mostrar">
                         {[...Array(5)].map((_, index) => {
@@ -34,7 +34,7 @@ function Comentario({ color }) {
                         })}
                     </div>
                 </div>
-                <p> lorem ipsum dolor sit amet, consectetur</p>
+                <p> {descripcion}</p>
             </div>
         </>
 
