@@ -86,10 +86,6 @@ function Header({ color, nombre }) {
       link: "/ConsultarServicio"
     },
     {
-      texto: "Actualizar Datos",
-      link: "/Servicios/Hospedaje"
-    },
-    {
       texto: "Cerrar Sesión",
       link: "/",
       accion: limpiarUsuario
@@ -100,10 +96,6 @@ function Header({ color, nombre }) {
     {
       texto: "Ver Empresas",
       link: "/ConsultarEmpresas"
-    },
-    {
-      texto: "Actualizar Datos",
-      link: "/Servicios/Hospedaje"
     },
     {
       texto: "Cerrar Sesión",

@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react';
 
 const TarjetaEmpresa = ({ nombre, rut, direccion, telefono, Correo, Facebook, instagram, Whatsapp, Estado }) => {
 
-    let [ estadoNuevo, setEstado ] = useState('');
+    let estadoNuevo='';
 
-    useEffect(() => {
+    function actualizarEstado (){
         if (Estado === 'Activo') {
             estadoNuevo = 'InActivo';
         }else{
@@ -17,12 +17,13 @@ const TarjetaEmpresa = ({ nombre, rut, direccion, telefono, Correo, Facebook, in
         axios
                 .get(`http://localhost:5000/empresa/servicios/${estadoNuevo}/${rut}`)
                 .then((response) => {
-                    setEstado(response.data);
+                    console.log(response.data);
+                    window.location.reload()
                 })
                 .catch((error) => {
                     console.log(error);
                 })
-    }, [estadoNuevo]);
+    }
     
     return (
         <div className="tarjetaEmpresa" style={{ borderColor: "#D94E9F" }}>
@@ -37,7 +38,7 @@ const TarjetaEmpresa = ({ nombre, rut, direccion, telefono, Correo, Facebook, in
                 <p> WhatsApp: {Whatsapp}</p>
                 <h6> Estado: {Estado}</h6>
             </div>
-            <button className='estado conBorde' style={{ borderColor: "#D94E9F", backgroundColor: "#D94E9F" }} > Cambiar Estado</button>
+            <button className='estado conBorde' style={{ borderColor: "#D94E9F", backgroundColor: "#D94E9F" }} onClick={actualizarEstado}> Cambiar Estado</button>
         </div>
     );
 }
