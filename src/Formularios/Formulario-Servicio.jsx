@@ -47,14 +47,15 @@ const FormularioServicio = () => {
     console.log(formData.values)
     
     setEnviando(true);
-    let result = await enviarServicio(formData);
+    enviarServicio(formData).then((result) => {
+      setEnviando(false)
+      if (result !== false) {
+        setUltimoAgregado(result)
+        setMostrarNotif(true);
+        resetForm();
+      }
+    });
 
-    setEnviando(false)
-    if (result !== false) {
-      setUltimoAgregado(result)
-      setMostrarNotif(true);
-      resetForm();
-    }
   }
 
   return (
@@ -125,3 +126,4 @@ const FormularioServicio = () => {
 }
 
 export default FormularioServicio;
+

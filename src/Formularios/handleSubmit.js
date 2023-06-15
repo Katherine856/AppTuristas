@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const enviarServicio = (formData) => {
+const enviarServicio = async (formData) => {
     for (let [name, value] of formData) {
         console.log(`${name} = ${value}`); 
     }
@@ -9,7 +9,9 @@ const enviarServicio = (formData) => {
             "Content-Type": 'multipart/form-data'
         }
     })
-        .then((result) => result.data)
+        .then((result) => {
+            return result.data;
+        })
 }
 
 const enviarComentario = (formDataComen) => {
