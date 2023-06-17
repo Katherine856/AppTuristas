@@ -14,7 +14,7 @@ const BodyEmpresas = () => {
 
     useEffect(() => {
         axios
-        .get(`http://localhost:5000/verEmpresas`)
+        .get(`server-turismo-production.up.railway.app/verEmpresas`)
         .then( (response) => {
             setEmpresas(response.data);
         })

@@ -43,7 +43,7 @@ const FormularioUsuario = () => {
     });
 
     let subir = async (values) => {
-        axios.get(`http://localhost:5000/usuario/insertar/${values.id}/${values.nombre}/${values.correo}/${values.contrasena}/${values.telefono}`)
+        axios.get(`server-turismo-production.up.railway.app/usuario/insertar/${values.id}/${values.nombre}/${values.correo}/${values.contrasena}/${values.telefono}`)
         .then(res => navigate('/'));
         
     }

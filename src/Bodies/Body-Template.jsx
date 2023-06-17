@@ -28,7 +28,7 @@ const BodyTemplate = () => {
 
     useEffect(() => {
         axios
-        .get(`http://localhost:5000/${seccion}`)
+        .get(`server-turismo-production.up.railway.app/${seccion}`)
         .then( (response) => {
             setServicio(response.data);
         })

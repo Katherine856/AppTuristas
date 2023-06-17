@@ -17,7 +17,7 @@ function Login() {
 
     const loguearse = (values) => {
 
-        axios.get(`http://localhost:5000/login/${values.tipo}/${values.correo}/${values.contrasena}`)
+        axios.get(`server-turismo-production.up.railway.app/login/${values.tipo}/${values.correo}/${values.contrasena}`)
             .then(res => res.data)
             .then(id => {
                 if (!id) {
