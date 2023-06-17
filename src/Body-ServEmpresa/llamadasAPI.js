@@ -1,5 +1,5 @@
 import axios from 'axios';
-const HOST = 'server-turismo-production.up.railway.app/empresa/servicios';
+const HOST = 'https://server-turismo-production.up.railway.app/empresa/servicios';
 
 const fetchDataServicios = async (idEmpresa) =>
     axios

@@ -4,7 +4,7 @@ const enviarServicio = async (formData) => {
     for (let [name, value] of formData) {
         console.log(`${name} = ${value}`); 
     }
-    axios.post("server-turismo-production.up.railway.app/servicio/insertar", formData, {
+    axios.post("https://server-turismo-production.up.railway.app/servicio/insertar", formData, {
         headers: {
             "Content-Type": 'multipart/form-data'
         }
@@ -18,7 +18,7 @@ const enviarComentario = (formDataComen) => {
     for (let [name, value] of formDataComen) {
         console.log(`${name} = ${value}`); 
     }
-    axios.post("server-turismo-production.up.railway.app/servicio/insertarcomentario", formDataComen, {
+    axios.post("https://server-turismo-production.up.railway.app/servicio/insertarcomentario", formDataComen, {
         headers: {
             "Content-Type": 'multipart/form-data'
         }

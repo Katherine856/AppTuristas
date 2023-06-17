@@ -44,7 +44,7 @@ const FormularioComentario = ({ color, idServ }) => {
     //let result = await enviarComentario(formData);
     let idUser = sessionStorage.getItem('idUsuario')
 
-    axios.get(`server-turismo-production.up.railway.app/servicio/insertarcomentario/${values.titulo}/${values.descripcion}/${values.valor}/${idServ}/${idUser}`)
+    axios.get(`https://server-turismo-production.up.railway.app/servicio/insertarcomentario/${values.titulo}/${values.descripcion}/${values.valor}/${idServ}/${idUser}`)
       .then(res => res.data)
       .then(res => {
         if (!res) {

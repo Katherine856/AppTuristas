@@ -55,7 +55,7 @@ const FormularioEmpresa = () => {
         let instagram = values.instagram === '' ? 'null' : values.instagram;
         let whatsapp = values.whatsapp === '' ? 'null' : values.whatsapp;
         let direccion = values.direccion.replace('#', '').replace('-', ' ');
-        axios.get(`server-turismo-production.up.railway.app/empresa/insertar/${values.rut}/${values.nombre}/${values.correo}/${values.contrasena}/${facebook}/${instagram}/${whatsapp}/${values.telefono}/${direccion}`)
+        axios.get(`https://server-turismo-production.up.railway.app/empresa/insertar/${values.rut}/${values.nombre}/${values.correo}/${values.contrasena}/${facebook}/${instagram}/${whatsapp}/${values.telefono}/${direccion}`)
         .then(res => console.log(res));
         
     }

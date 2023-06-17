@@ -15,7 +15,7 @@ const TarjetaEmpresa = ({ nombre, rut, direccion, telefono, Correo, Facebook, in
             estadoNuevo = 'Activo'
         }
         axios
-                .get(`server-turismo-production.up.railway.app/empresa/servicios/${estadoNuevo}/${rut}`)
+                .get(`https://server-turismo-production.up.railway.app/empresa/servicios/${estadoNuevo}/${rut}`)
                 .then((response) => {
                     console.log(response.data);
                     window.location.reload()
